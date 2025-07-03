@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#header {
+    font-family: "Monoton", sans-serif;
+    position: absolute;
+    text-align: center;
+    align-items: center;
+    top: 0;
+    color: white;
+    font-size: 1.4rem;
+    height: 10vh;
+    line-height: 10vh;
+    
+    
+    background-color: rgb(77, 37, 163, 0.885);
+    width: 100%;
+    border-bottom: 5px solid  rgb(60, 37, 111);
+}
+
+.navBar {
+    font-family: "Happy Monkey", system-ui;
+    position: absolute;
+    height: 100%;
+    top: 10vh;
+    width: 25vh;
+    font-size: 1.2rem;
+
+    background-color: rgba(77, 37, 163, 0.885);
+    border-right: 5px solid  rgb(60, 37, 111);
+}
+.navBar ul li {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 5px;
+    border-bottom: 3px solid orange;
+}
+.navBar ul li a {
+    color: white;           /* Font color */
+    text-decoration: none;  /* Removes underline */
+    padding: 2px;           /* Adds padding inside each link */
+}
+
+#root {
+    font-family: "Happy Monkey", system-ui;
+    margin-top: 10vh;
+    margin-left: 25vh;
+}
