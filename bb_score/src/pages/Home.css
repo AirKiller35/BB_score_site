@@ -2,6 +2,9 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    font-family: "Happy Monkey", system-ui;
+    margin-top: 10vh;
+    margin-left: 25vh;
     justify-content: center;
     align-items: center;
     height: 90vh;

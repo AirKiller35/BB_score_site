@@ -1,0 +1,27 @@
+.navBar {
+    font-family: "Happy Monkey", system-ui;
+    position: absolute;
+    margin-left: 0;
+    height: 100%;
+    top: 10vh;
+    width: 25vh;
+    font-size: 1.2rem;
+
+    background-color: rgba(77, 37, 163, 0.885);
+    border-right: 5px solid  rgb(60, 37, 111);
+}
+.navBar ul li {
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 5px;
+    border-bottom: 3px solid orange;
+    color: white;           /* Font color */
+    text-decoration: none;
+}
+.navBar ul li:hover{
+    background-color: orange;
+    color: blue;
+    text-decoration: none;
+    transition: 0.3s;
+}
