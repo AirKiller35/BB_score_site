@@ -21,8 +21,9 @@
     border-bottom: 5px solid  rgb(60, 37, 111);
 }
 
-/* #root {
-    font-family: "Happy Monkey", system-ui;
-    margin-top: 10vh;
-    margin-left: 25vh;
-} */
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+}

@@ -21,7 +21,8 @@ createRoot(document.getElementById('root')).render(
           <Route path='/view' element={<ViewMatch/>}/>
           <Route path='/previous' element={<PrevMatches/>}/>
         </Route>
-
+        
+        <Route path='/start' element={<StartMatch />}/>
         <Route path='/login' element={<Login />}/>
       </Routes>
     </BrowserRouter>

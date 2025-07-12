@@ -5,7 +5,7 @@ import './StartMatch.css';
 function StartMatch() {
     return (
         <div className="startMatch">
-            <h3>Match in on!</h3>
+            <h3>Match is on!</h3>
         </div>
     );
 }
