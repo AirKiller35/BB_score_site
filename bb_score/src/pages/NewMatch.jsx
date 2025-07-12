@@ -40,6 +40,22 @@ function NewMatch() {
     setPlayersB((prev) => prev.filter((_, i) => i !== index))
   }
 
+  const submitted = () => {
+    let matchInfo = JSON.stringify({
+      Match : matchType,
+      Quater : quarter,
+      TimePerQ : quarterTime,
+      teamA: teamNameA,
+      APlayers : playersA,
+      ColourA : colourA,
+      teamB : teamNameB,
+      BPlayers : playersB,
+      ColourB : colourB
+    });
+
+    navigate('/start', {state: matchInfo});
+  }; 
+
   return(
     <div className="newMatch">
       <div className="basicDetails">
@@ -172,7 +188,7 @@ function NewMatch() {
       <div className="submitContainer">
         <button 
           id='submitBtn' 
-          onClick={() => navigate('/start')}>Submit
+          onClick={submitted}>Submit
         </button>
       </div>
       
