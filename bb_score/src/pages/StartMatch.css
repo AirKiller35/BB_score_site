@@ -1,4 +1,121 @@
 .startMatch {
     font-family: "Happy Monkey", system-ui;
     margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.matchControl {
+    display: flex;
+    justify-content: center;
+    background-color: chocolate;
+    border-bottom: 3px solid rgb(101, 53, 9);
+    color: white;
+    font-size: 1.3rem;
+    padding: 10px;
+}
+
+.teams {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.TEAM_A {
+    background-color: orange;
+    width: 50%;
+    padding: 10px;
+    min-height: 100vh;
+    color: white;
+}
+
+.TEAM_A h3 {
+    font-size: 1.7rem;
+    font-style:italic;
+}
+
+.TEAM_A h1 {
+    font-size: 5rem;
+}
+
+.TEAM_B {
+    background-color: blue;
+    width: 50%;
+    text-align: right;
+    padding: 10px;
+    color: white;
+}
+
+.TEAM_B h3 {
+    font-size: 1.7rem;
+    font-style:italic;
+}
+
+.TEAM_B h1 {
+    font-size: 5rem;
+}
+
+.players {
+    background-color: rgba(160, 160, 160, 0.819);
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.time {
+    display: flex;
+    justify-content: space-around;
+    gap: 20vh;
+}
+
+.stopWatch {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 2rem;
+    background-color: #f4f4f4;
+    color: black;
+    width: 30vh;
+    padding: 15px;
+    border-radius: 12px;
+}
+
+.shotClock {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 2rem;
+    background-color: #f4f4f4;
+    color: black;
+    width: 30vh;
+    padding: 15px;
+    border-radius: 12px;
+}
+
+.startBtn {
+    margin: auto;
+    background-color: green;
+    border: 2px solid black;
+    min-width: 100px;
+    font-size: 1.2rem;
+}
+.startBtn:hover {
+    background-color: green;
+}
+
+.pauseBtn {
+    margin: auto;
+    background-color: red;
+    border: 2px solid black;
+    min-width: 100px;
+    font-size: 1.2rem;
+}
+.pauseBtn:hover {
+    background-color: red;
+}
+
+.resetBtn {
+    background-color: gray;
+    border: 2px solid black;
+    font-size: 1.2rem;
+    min-width: 100px;
+    margin: auto;
 }
