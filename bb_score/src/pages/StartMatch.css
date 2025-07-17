@@ -7,7 +7,7 @@
 
 .matchControl {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     background-color: chocolate;
     border-bottom: 3px solid rgb(101, 53, 9);
     color: white;
@@ -62,6 +62,7 @@
 
 .time {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     gap: 20vh;
 }
@@ -73,7 +74,7 @@
     font-size: 2rem;
     background-color: #f4f4f4;
     color: black;
-    width: 30vh;
+    max-width: 20vh;
     padding: 15px;
     border-radius: 12px;
 }
@@ -85,7 +86,7 @@
     font-size: 2rem;
     background-color: #f4f4f4;
     color: black;
-    width: 30vh;
+    max-width: 30vh;
     padding: 15px;
     border-radius: 12px;
 }

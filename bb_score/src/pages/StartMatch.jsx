@@ -24,20 +24,20 @@ function StartMatch() {
 
   return (
     <div className="startMatch">
-      <div className="matchControl">
-        <div className="time">
-          <div className="stopWatch">
-            <Clock maxTimeMin={quarterTime} maxTimeSec={0}/>
-          </div>
+      <div className="teams">
+        <div className="matchControl">
+          <div className="time">
+            <div className="stopWatch">
+              <Clock maxTimeMin={quarterTime} maxTimeSec={0}/>
+            </div>
 
-          <div className="shotClock">
-            <Clock maxTimeMin={0} maxTimeSec={24}/>
+            <div className="shotClock">
+              <Clock maxTimeMin={0} maxTimeSec={24}/>
+            </div>
           </div>
-        </div>
         
         <div className="controls"></div>
       </div>
-      <div className="teams">
         <div className="TEAM_A">
         <h3>{teamA}</h3>
         <h1>{scoreA}</h1>
