@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef} from "react";
 import ReactDOM from 'react-dom/client';
 
-function Clock ({ maxTimeMin, maxTimeSec }) {
+function Clock ({ maxTimeMin, maxTimeSec, onTimeout }) {
   const totalInitialSeconds = maxTimeMin * 60 + maxTimeSec;
   const [totalSeconds, setTotalSeconds] = useState(totalInitialSeconds);
   const [isRunning, setIsRunning] = useState(false);
@@ -28,9 +28,25 @@ function Clock ({ maxTimeMin, maxTimeSec }) {
     return () => clearInterval(timerRef.current);
   }, [isRunning]);
 
+  useEffect(() => {
+    if(totalSeconds === 0){
+      clearInterval(timerRef.current);
+      onTimeout?.();
+      setTotalSeconds(totalInitialSeconds)
+    }
+  },[totalSeconds]);
+
+  useEffect(() => {
+    const totalInitialSeconds = maxTimeMin * 60 + maxTimeSec;
+    setTotalSeconds(totalInitialSeconds);
+    setIsRunning(false);
+    clearInterval(timerRef.current);
+  }, [maxTimeMin, maxTimeSec]);
+
+
   const resetTimer = () => {
     clearInterval(timerRef.current);
-    setTotalSeconds(maxTimeSec);
+    setTotalSeconds(maxTimeMin * 60 + maxTimeSec);
     setIsRunning(false);
   };
 

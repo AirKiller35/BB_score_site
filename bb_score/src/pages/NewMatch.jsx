@@ -9,6 +9,8 @@ function NewMatch() {
   const [matchType, setMatchType] = React.useState('');
   const [quarter, setQuater] = React.useState('');
   const [quarterTime, setQuaterTime] = React.useState('');
+  const [quarterBreak, setQuarterBreak] = React.useState('');
+
   const [teamNameA, setTeamNameA] = React.useState('');
   const [teamNameB, setTeamNameB] = React.useState('');
   const [colourA, setColourA] = React.useState('');
@@ -17,6 +19,7 @@ function NewMatch() {
   const [playersA, setPlayersA] = React.useState([]);
   const [jerseyB, setJerseyB] = React.useState('');
   const [playersB, setPlayersB] = React.useState([]);
+  
 
   const addPlayerA = () => {
     if(jerseyA.trim() === '') return;
@@ -45,6 +48,7 @@ function NewMatch() {
       Match : matchType,
       Quater : quarter,
       TimePerQ : quarterTime,
+      QuarterB : quarterBreak,
       teamA: teamNameA,
       APlayers : playersA,
       ColourA : colourA,
@@ -94,6 +98,15 @@ function NewMatch() {
             placeholder='time duration' 
             id='quarterTime'
             onChange={(e) => setQuaterTime(e.target.value)}/>
+        </label>
+        <label>
+          Time between quarters:
+          <input 
+            type="text" 
+            placeholder='time duration'
+            id ='quarterBreak'
+            onChange={(e) => setQuarterBreak(e.target.value)}
+            />
         </label>
       </div>
 

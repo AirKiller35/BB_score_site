@@ -5,6 +5,41 @@
     flex-direction: column;
 }
 
+.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* vertically center */
+  position: fixed;
+  top: 40%;
+  left: 45%;
+  z-index: 30;
+  background-color: aliceblue;
+  padding: 20px;
+  font-size: 3rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+.active h2 {
+    font-size: 1.5rem;
+}
+
+.inactive {
+    display: none;
+}
+
+.quarter {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 1.5rem;
+    background-color: #f4f4f4;
+    color: black;
+    max-width: 30vh;
+    padding: 15px;
+    border-radius: 12px;
+}
+
 .matchControl {
     display: flex;
     flex-direction: column;
@@ -64,7 +99,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    gap: 20vh;
+    gap: 5vh;
 }
 
 .stopWatch {
