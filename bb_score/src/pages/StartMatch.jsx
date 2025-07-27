@@ -20,6 +20,8 @@ function StartMatch() {
   const playersB = matchData?.BPlayers;
   const colourB = matchData?.ColourB;
 
+  const [playersAScore, setPlayersAScore] = React.useState(new Array(playersA.length).fill(0));
+  const [playersBScore, setPlayersBScore] = React.useState(new Array(playersB.length).fill(0));
   const [scoreA, setScoreA] = React.useState(0);
   const [scoreB, setScoreB] = React.useState(0);
   const [quarter, setQuarter] = React.useState(1);
@@ -71,21 +73,44 @@ function StartMatch() {
         <h1>{scoreA}</h1>
         <br />
         <div className="players">
-          {playersA.map((jersey, index) => (
-            <div className="playerList" key={index}>
-              <li className="player">{jersey}</li>
-              <button className="add_2"
-                onClick={() => {
-                  setScoreA(scoreA+2);
-                }}
-              >+2</button>
-              <button className="add_3"
-                onClick={() => {
-                  setScoreA(scoreA+3)
-                }}
-              >+3</button>
-            </div>
-          ))}
+          <table className='score-table'>
+            <thead>
+              <tr>
+                <th>Jersey No</th>
+                <th>Score</th>
+                <th>+2</th>
+                <th>+3</th>
+              </tr>
+            </thead>
+            <tbody>
+              {playersA.map((jersey, index) => (
+                <tr key={index}>
+                  <td>{jersey}</td>
+                  <td>{playersAScore[index]}</td>
+                  <td>
+                    <button
+                      onClick={() => {
+                        const updatedScores = [...playersAScore];
+                        updatedScores[index] += 2;
+                        setPlayersAScore(updatedScores);
+                        setScoreA(scoreA + 2);
+                      }}
+                    >+2</button>
+                  </td>
+                  <td>
+                    <button className="add_3"
+                      onClick={() => {
+                        let updatedAScores = [...playersAScore]
+                        updatedAScores[index] += 3;
+                        setPlayersAScore(updatedAScores);
+                        setScoreA(scoreA+3)
+                      }}
+                      >+3</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
         </div>
 
@@ -98,24 +123,50 @@ function StartMatch() {
         <h3>{teamB}</h3>
         <h1>{scoreB}</h1>
         <br />
+        
         <div className="players">
-          {playersB.map((jersey, index) => (
-            <div className="playerList" key={index}>
-              <li className="player">{jersey}</li>
-              <button className="add_2"
-                onClick={() => {
-                  setScoreB(scoreB+2);
-                }}
-              >+2</button>
-              <button className="add_3"
-                onClick={() => {
-                  setScoreB(scoreB+3);
-                }}
-              >+3</button>
-            </div>
-          ))}
+          <table className='score-table'>
+            <thead>
+              <tr>
+                <th>Jersey No</th>
+                <th>Score</th>
+                <th>+2</th>
+                <th>+3</th>
+              </tr>
+            </thead>
+            <tbody>
+              {playersB.map((jersey, index) => (
+                <tr key={index}>
+                  <td>{jersey}</td>
+                  <td>{playersBScore[index]}</td>
+                  <td>
+                    <button
+                      onClick={() => {
+                        const updatedScores = [...playersBScore];
+                        updatedScores[index] += 2;
+                        setPlayersBScore(updatedScores);
+                        setScoreB(scoreB + 2);
+                      }}
+                    >+2</button>
+                  </td>
+                  <td>
+                    <button className="add_3"
+                      onClick={() => {
+                        let updatedScores = [...playersBScore]
+                        updatedScores[index] += 3;
+                        setPlayersBScore(updatedScores);
+                        setScoreB(scoreB+3)
+                      }}
+                      >+3</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
+
         </div>
+        
       </div>
     </div>
   );

@@ -89,11 +89,35 @@
     font-size: 5rem;
 }
 
+.score-table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+}
+
+.score-table th{
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.score-table td {
+  padding: 3px;
+}
+
 .players {
     background-color: rgba(160, 160, 160, 0.819);
     padding: 5px;
     border-radius: 10px;
 }
+
+.playerHeader {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+.playerHeader li{
+    text-decoration: none;
+    list-style: none;}
 
 .time {
     display: flex;
