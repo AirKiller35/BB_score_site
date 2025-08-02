@@ -44,7 +44,8 @@ function StartMatch() {
   
   const syncMatchToBackend = async () => {
     const matchSnapshot = {
-      teamA : scoreA, teamB: scoreB, 
+      teamA, scoreA, 
+      teamB, scoreB, 
       playersA, playersB, 
       playersAScore, playersBScore, 
       quarter, 
@@ -72,7 +73,7 @@ function StartMatch() {
   return (
     <div className="startMatch" >
       <div className="teams">
-        <div className={quarterB ? 'active' : 'inactive'}>
+        <div className={quarterB ? 'active_break' : 'inactive_break'}>
           <h2>Break Time left</h2>
           <Clock maxTimeMin={quarterBreakTime} maxTimeSec={0} onTimeout={resume} matchId={matchId} clockType={'breakClock'}/>
         </div>
@@ -107,17 +108,41 @@ function StartMatch() {
           <h3>{teamA}</h3>
           <h1>{scoreA}</h1>
 
+
           <button className='foul'
             onClick={() => {
               setFoulA(true)
             }}
-          >Foul</button>
-          <button className="freethrow"
-            onClick={() => {
-              setFreethrowA(!freethrowA)
-            }}
-          >Free throw</button>
+          >Foul by {teamA}</button>
 
+          <div className={foulA ? 'active_foul' : 'inactive_foul'}>
+            <h4>Freethow? : </h4> 
+            <button className="ft_yes"
+              onClick={() => {
+                setFreethrowB(true);
+                setFoulA(false);
+              }}
+            ><i className='fa-solid fa-check'></i></button>
+            <button className="ft_no"
+             onClick={() => {
+                setFoulA(false);
+              }}
+            ><i className='fa-solid fa-x'></i></button>
+          </div>
+          <div className={freethrowA ? 'active_fr' : 'inactive_fr'}>
+            <button 
+              onClick={() => {
+                setScoreA(scoreA +1);
+              }}
+            >+1</button>
+            <button
+              onClick={() => {
+                setFreethrowA(false)
+              }}
+            >Close</button>
+          </div>
+
+          
           <div className="players">
           <table className='score-table'>
             <thead>
@@ -169,7 +194,40 @@ function StartMatch() {
         >
         <h3>{teamB}</h3>
         <h1>{scoreB}</h1>
-        <br />
+
+        <button className='foul'
+          onClick={() => {
+            setFoulB(true)
+          }}
+        >Foul by {teamB}</button>
+
+        <div className={foulB ? 'active_foul' : 'inactive_foul'}>
+          <h4>Freethow? : </h4> 
+          <button className="ft_yes"
+            onClick={() => {
+              setFreethrowA(true);
+              setFoulB(false);
+            }}
+          ><i className='fa-solid fa-check'></i></button>
+          <button className="ft_no"
+            onClick={() => {
+              setFoulB(false);
+            }}
+          ><i className='fa-solid fa-x'></i></button>
+        </div>
+        <div className={freethrowB ? 'active_fr' : 'inactive_fr'}>
+          <button 
+            onClick={() => {
+              setScoreB(scoreB +1);
+            }}
+          >+1</button>
+          <button
+            onClick={() => {
+              setFreethrowB(false)
+            }}
+          >Close</button>
+        </div>
+
         
         <div className="players">
           <table className='score-table'>

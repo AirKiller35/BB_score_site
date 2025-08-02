@@ -20,7 +20,7 @@ function ViewMatch() {
     };
 
     fetchMatch();
-    const interval = setInterval(fetchMatch, 1000);
+    const interval = setInterval(fetchMatch, 500);
     return () => clearInterval(interval);
   }, []);
 
@@ -33,25 +33,61 @@ function ViewMatch() {
 
   return (
     <div className="viewMatch">
-      <h1>Quarter: {matchData.quarter}</h1>
-      <h2>Team A: {matchData.scoreA}</h2>
-      <h2>Team B: {matchData.scoreB}</h2>
-      <h3>Players A</h3>
-      <ul>
-        {matchData.playersA.map((jersey, index) => (
-          <li key={index}>
-            #{jersey} — {matchData.playersAScore[index]} pts
-          </li>
-        ))}
-      </ul>
+      <div className="matchInfo">
+
+        <div className="quarter">
+          <h2>Q-{matchData.quarter}</h2>
+        </div>
+
+        
+
+      </div>
+      <div className="A">
+
+      </div>
+      <div className="B">
+
+      </div>
+      
+      <h2>Team A: {matchData.teamA}</h2>
+      <h1>Score {matchData.teamA}: {matchData.scoreA}</h1>
+      <h2>Team B: {matchData.teamB}</h2>
+      <h1>Score {matchData.teamB}: {matchData.scoreB}</h1>
+      <table className='score-table'>
+        <thead>
+          <tr>
+            <th>Jersey No</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          {matchData.playersA.map((jersey, index) => (
+            <tr key={index}>
+              <td>{jersey}</td>
+              <td>{matchData.playersAScore[index]}</td>
+              
+            </tr>
+          ))}
+        </tbody>
+      </table>
       <h3>Players B</h3>
-      <ul>
-        {matchData.playersB.map((jersey, index) => (
-          <li key={index}>
-            #{jersey} — {matchData.playersBScore[index]} pts
-          </li>
-        ))}
-      </ul>
+      <table className='score-table'>
+        <thead>
+          <tr>
+            <th>Jersey No</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          {matchData.playersB.map((jersey, index) => (
+            <tr key={index}>
+              <td>{jersey}</td>
+              <td>{matchData.playersBScore[index]}</td>
+              
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

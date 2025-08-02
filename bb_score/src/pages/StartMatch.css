@@ -5,7 +5,7 @@
     flex-direction: column;
 }
 
-.active {
+.active_break {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,13 +20,43 @@
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
-.active h2 {
+.active_break h2 {
     font-size: 1.5rem;
 }
-
-.inactive {
+.inactive_break {
     display: none;
 }
+
+
+.active_foul {
+margin-top: 0.5vh;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ background-color: rgba(0, 0, 0, 0.815);
+ padding: 5px;
+ border-radius: 10px;   
+}
+.inactive_foul {
+    display: none;
+}
+.active_fr{
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.815);
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    margin-top: 0.5vh;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid darkgray;
+    border-radius: 10px;
+    max-width: 20vh;
+}
+.inactive_fr {
+    display: none;
+}
+
 
 .quarter {
     display: flex;
@@ -62,12 +92,10 @@
     min-height: 100vh;
     color: white;
 }
-
 .TEAM_A h3 {
     font-size: 1.7rem;
     font-style:italic;
 }
-
 .TEAM_A h1 {
     font-size: 5rem;
 }
@@ -79,32 +107,31 @@
     padding: 10px;
     color: white;
 }
-
 .TEAM_B h3 {
     font-size: 1.7rem;
     font-style:italic;
 }
-
 .TEAM_B h1 {
     font-size: 5rem;
 }
+
 
 .score-table {
   border-collapse: collapse;
   width: 100%;
   text-align: center;
 }
-
 .score-table th{
   border-radius: 5px;
   padding: 2px;
 }
-
 .score-table td {
   padding: 3px;
 }
 
+
 .players {
+    margin-top: 1vh;
     background-color: rgba(160, 160, 160, 0.819);
     padding: 5px;
     border-radius: 10px;
@@ -118,6 +145,7 @@
 .playerHeader li{
     text-decoration: none;
     list-style: none;}
+
 
 .time {
     display: flex;
@@ -161,6 +189,7 @@
     background-color: green;
 }
 
+
 .pauseBtn {
     margin: auto;
     background-color: red;
@@ -171,6 +200,7 @@
 .pauseBtn:hover {
     background-color: red;
 }
+
 
 .resetBtn {
     background-color: gray;

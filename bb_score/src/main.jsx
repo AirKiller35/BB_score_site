@@ -18,10 +18,10 @@ createRoot(document.getElementById('root')).render(
         <Route element={<Layout />}>
           <Route path='/' element={<HomePage/>}/>
           <Route path='/new' element={<NewMatch/>}/>
-          <Route path='/match/:matchId/view' element={<ViewMatch/>} />
           <Route path='/previous' element={<PrevMatches/>}/>
         </Route>
         
+        <Route path='/match/:matchId/view' element={<ViewMatch/>} />
         <Route path='/match/:matchId/start' element={<StartMatch />}/>
         <Route path='/login' element={<Login />}/>
       </Routes>

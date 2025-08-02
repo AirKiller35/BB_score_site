@@ -48,7 +48,6 @@ function NewMatch() {
   const submitted = () => {
     let matchInfo = JSON.stringify({
       Match : matchType,
-      MatchID: matchId,
       Quater : quarter,
       TimePerQ : quarterTime,
       QuarterB : quarterBreak,

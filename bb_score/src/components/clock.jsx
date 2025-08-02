@@ -10,7 +10,8 @@ function Clock ({ maxTimeMin, maxTimeSec, onTimeout , matchId, clockType}) {
   const min = Math.floor(totalSeconds / 60);
   const sec = totalSeconds % 60;
   const displayTime = `${min}:${sec < 10 ? "0" + sec : sec}`;
-
+  
+  //NORMAL CLOCK RUNNER
   useEffect(() => {
     if (isRunning) {
       timerRef.current = setInterval(() => {
@@ -28,6 +29,7 @@ function Clock ({ maxTimeMin, maxTimeSec, onTimeout , matchId, clockType}) {
     return () => clearInterval(timerRef.current);
   }, [isRunning]);
 
+  //onTimeout CALLER OR BREAK CALLER
   useEffect(() => {
     if(totalSeconds === 0){
       clearInterval(timerRef.current);
@@ -36,6 +38,7 @@ function Clock ({ maxTimeMin, maxTimeSec, onTimeout , matchId, clockType}) {
     }
   },[totalSeconds]);
 
+  //INITIAL CLOCK SETTER
   useEffect(() => {
     const totalInitialSeconds = maxTimeMin * 60 + maxTimeSec;
     setTotalSeconds(totalInitialSeconds);
@@ -43,6 +46,8 @@ function Clock ({ maxTimeMin, maxTimeSec, onTimeout , matchId, clockType}) {
     clearInterval(timerRef.current);
   }, [maxTimeMin, maxTimeSec]);
 
+  //PUBLIC CLOCK
+  // 3 TYPES OF CLOCK : matchClock, shotClock, breakClock
   useEffect(() => {
     if(matchId && isRunning) {
       fetch(`/match/${matchId}/timer`, {
@@ -55,6 +60,7 @@ function Clock ({ maxTimeMin, maxTimeSec, onTimeout , matchId, clockType}) {
     }
   }, [totalSeconds, matchId, isRunning]);
 
+  //CLOCK RESETTER
   const resetTimer = () => {
     clearInterval(timerRef.current);
     setTotalSeconds(maxTimeMin * 60 + maxTimeSec);
