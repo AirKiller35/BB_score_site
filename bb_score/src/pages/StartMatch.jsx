@@ -26,6 +26,11 @@ function StartMatch() {
   const [scoreB, setScoreB] = React.useState(0);
   const [quarter, setQuarter] = React.useState(1);
   const [quarterB, setQuarterB] = React.useState();
+  const [foulA, setFoulA] = React.useState(false);
+  const [foulB, setFoulB] = React.useState(false);
+  const [freethrowA, setFreethrowA] = React.useState(false);
+  const [freethrowB, setFreethrowB] = React.useState(false);
+
 
   const handleTimeout = () => {
     setQuarterB(true);
@@ -43,6 +48,7 @@ function StartMatch() {
           <h2>Break Time left</h2>
           <Clock maxTimeMin={quarterBreakTime} maxTimeSec={0} onTimeout={resume}/>
         </div>
+
         <div className="matchControl"
           style={quarterB ? {
             filter:'brightness(50%)',
@@ -63,16 +69,28 @@ function StartMatch() {
             </div>
           </div>
         </div>
+
         <div className="TEAM_A"
-          style={{
+            style={{
           filter: quarterB ? 'brightness(50%)' : 'none',
           transition: 'filter 0.3s ease'
-        }}
+          }}
         >
-        <h3>{teamA}</h3>
-        <h1>{scoreA}</h1>
-        <br />
-        <div className="players">
+          <h3>{teamA}</h3>
+          <h1>{scoreA}</h1>
+
+          <button className='foul'
+            onClick={() => {
+              setFoulA(true)
+            }}
+          >Foul</button>
+          <button className="freethrow"
+            onClick={() => {
+              setFreethrowA(!freethrowA)
+            }}
+          >Free throw</button>
+
+          <div className="players">
           <table className='score-table'>
             <thead>
               <tr>
@@ -111,7 +129,8 @@ function StartMatch() {
               ))}
             </tbody>
           </table>
-        </div>
+          </div>
+
         </div>
 
         <div className="TEAM_B"
