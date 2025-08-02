@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef} from "react";
 import ReactDOM from 'react-dom/client';
 
-function Clock ({ maxTimeMin, maxTimeSec, onTimeout }) {
+function Clock ({ maxTimeMin, maxTimeSec, onTimeout , matchId, clockType}) {
   const totalInitialSeconds = maxTimeMin * 60 + maxTimeSec;
   const [totalSeconds, setTotalSeconds] = useState(totalInitialSeconds);
   const [isRunning, setIsRunning] = useState(false);
@@ -43,6 +43,17 @@ function Clock ({ maxTimeMin, maxTimeSec, onTimeout }) {
     clearInterval(timerRef.current);
   }, [maxTimeMin, maxTimeSec]);
 
+  useEffect(() => {
+    if(matchId && isRunning) {
+      fetch(`/match/${matchId}/timer`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ [clockType]: totalSeconds })
+      }).catch((err) => console.error("timer sync error: ", err));
+    }
+  }, [totalSeconds, matchId, isRunning]);
 
   const resetTimer = () => {
     clearInterval(timerRef.current);

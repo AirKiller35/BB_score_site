@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import Clock from '../components/clock';
 import './StartMatch.css';
 
 function StartMatch() {
+  const { matchId } = useParams();
   const location = useLocation();
   const matchData = JSON.parse(location.state);
 
@@ -40,13 +41,40 @@ function StartMatch() {
     setQuarter(prev => prev+1)
     setQuarterB(false);
   };
+  
+  const syncMatchToBackend = async () => {
+    const matchSnapshot = {
+      teamA : scoreA, teamB: scoreB, 
+      playersA, playersB, 
+      playersAScore, playersBScore, 
+      quarter, 
+      matchType, 
+      noOfQuaters, 
+      quarterTime, 
+      quarterBreakTime
+    };
+
+    try{
+      await fetch(`http://localhost:4000/match/${matchId}`, {
+        method: "POST",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(matchSnapshot)
+      });
+    } catch(err) {
+      console.error("Failed to sync match to backend: ", err);
+    }
+  };
+
+  useEffect(() => {
+    syncMatchToBackend();
+  }, [scoreA, scoreB, playersAScore, playersBScore, quarter]);
 
   return (
     <div className="startMatch" >
       <div className="teams">
         <div className={quarterB ? 'active' : 'inactive'}>
           <h2>Break Time left</h2>
-          <Clock maxTimeMin={quarterBreakTime} maxTimeSec={0} onTimeout={resume}/>
+          <Clock maxTimeMin={quarterBreakTime} maxTimeSec={0} onTimeout={resume} matchId={matchId} clockType={'breakClock'}/>
         </div>
 
         <div className="matchControl"
@@ -57,11 +85,11 @@ function StartMatch() {
         >
           <div className="time">
             <div className="stopWatch">
-              <Clock maxTimeMin={quarterTime} maxTimeSec={0} onTimeout = {handleTimeout}/>
+              <Clock maxTimeMin={quarterTime} maxTimeSec={0} onTimeout = {handleTimeout} matchId={matchId} clockType={'matchClock'}/>
             </div>
 
             <div className="shotClock">
-              <Clock maxTimeMin={0} maxTimeSec={24}/>
+              <Clock maxTimeMin={0} maxTimeSec={24} matchId={matchId} clockType={'shotClock'}/>
             </div>
 
             <div className="quarter">

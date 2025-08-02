@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { useNavigate } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 import './NewMatch.css';
 
 function NewMatch() {
   const navigate = useNavigate();
+  const matchId = uuidv4()
 
   const [matchType, setMatchType] = React.useState('');
   const [quarter, setQuater] = React.useState('');
@@ -46,6 +48,7 @@ function NewMatch() {
   const submitted = () => {
     let matchInfo = JSON.stringify({
       Match : matchType,
+      MatchID: matchId,
       Quater : quarter,
       TimePerQ : quarterTime,
       QuarterB : quarterBreak,
@@ -57,7 +60,7 @@ function NewMatch() {
       ColourB : colourB
     });
 
-    navigate('/start', {state: matchInfo});
+    navigate(`/match/${matchId}/start`, {state: matchInfo});
   }; 
 
   return(
