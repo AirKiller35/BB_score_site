@@ -1,10 +1,68 @@
 .viewMatch{
     font-family: "Happy Monkey", system-ui;
     margin-top: 10vh;
-    margin-left: 10vh;
+    background-color: rgba(171, 122, 217, 0.684);
+    min-height: 90vh;
 }
 
-li{
-    text-decoration: none;
-    list-style: none;
+.matchInfo {
+    display: flex;
+    justify-content: center;
+}
+
+.quarter_view, .active_clock, .inactive_clock {
+    display: flex; 
+    flex-direction: column;              
+    align-items: center;         
+    justify-content: center;
+    background-color: blueviolet;
+    min-width: 30vh;
+    border-radius: 0;
+    border: 0.5vh solid darkmagenta;
+    color: white;
+    font-size: 2rem;
+    padding: 1vh;    
+}
+.active_clock {
+    font-weight: bold;
+    font-size: 2rem;
+}
+/* .inactive_clock{
+    display: none;
+} */
+
+.A{
+    padding: 2vh;
+    background-color: darkred;
+    width: 50%;
+    color: white;
+}
+
+.B {
+    padding: 15px;
+    background-color: blue;
+    width: 50%;
+    color: white;
+    text-align: right;
+}
+
+.score-table-view {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+.score-table-view th,
+.score-table-view td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid white; 
+}
+.score-table-view thead {
+  background-color: #333;
+  color: white;
+}
+.score-table-view tbody tr {
+  background-color: #444;
+  color: #f0f0f0;
 }

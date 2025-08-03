@@ -31,7 +31,6 @@ app.post('/match/:matchId', (req, res) => {
   playersB: [],
   scoresA: [],
   scoresB: [],
-  timer: 0, 
   ...newData }; 
 
   res.json({ status: 'created', matchData: matches[matchId] });
@@ -51,6 +50,22 @@ app.patch('/match/:matchId', (req, res) => {
   }
 
   res.json({status: 'updated', matchData: matches[matchId]});
+});
+
+app.patch('/match/:matchId/timer', (req, res) => {
+  const {matchId} = req.params;
+  const timerUpdate = req.body;
+
+  if(!matches[matchId]){
+    return res.status(404).json({error: 'Match not found'});
+  }
+
+  matches[matchId] = {
+    ...matches[matchId],
+    ...timerUpdate
+  }
+
+  res.json({status: 'timer updated', matchData: matches[matchId]});
 });
 
 app.listen(PORT, () => {

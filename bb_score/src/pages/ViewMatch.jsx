@@ -24,6 +24,12 @@ function ViewMatch() {
     return () => clearInterval(interval);
   }, []);
 
+  function formatTime(totalSec) {
+    let min = Math.floor(totalSec/60);
+    let sec = totalSec%60;
+    return `${min} : ${sec < 10 ? '0'+sec : sec}`
+  }
+
   if (!matchData) return (
         <div className="viewMatch">
             <p>Loading...</p>
@@ -35,59 +41,70 @@ function ViewMatch() {
     <div className="viewMatch">
       <div className="matchInfo">
 
-        <div className="quarter">
+        <div className="quarter_view">
           <h2>Q-{matchData.quarter}</h2>
         </div>
 
+        <div className={(matchData?.matchClock ? 'active_clock' : 'inactive_clock')}>
+          <h5>Match time:</h5>
+          {formatTime(matchData?.matchClock)}
+        </div>
+
+        <div className={(matchData?.shotClock ? 'active_clock' : 'inactive_clock')}>
+          <h5>Shot Clock</h5>
+          {formatTime(matchData?.shotClock)}
+        </div>
         
 
       </div>
-      <div className="A">
+      <div className="teams">
 
-      </div>
-      <div className="B">
+        <div className="A">
+          <h2>Team A: {matchData.teamA}</h2>
+          <h1>Score : {matchData.scoreA}</h1>
+          <table className='score-table-view'>
+            <thead>
+              <tr>
+                <th>Jersey No</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              {matchData.playersA.map((jersey, index) => (
+                <tr key={index}>
+                  <td>{jersey}</td>
+                  <td>{matchData.playersAScore[index]}</td>
+                  
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
+        <div className="B">
+          <h2>Team B: {matchData.teamB}</h2>
+          <h1>Score : {matchData.scoreB}</h1>
+          <table className='score-table-view'>
+            <thead>
+              <tr>
+                <th>Jersey No</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              {matchData.playersB.map((jersey, index) => (
+                <tr key={index}>
+                  <td>{jersey}</td>
+                  <td>{matchData.playersBScore[index]}</td>
+                  
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      
       </div>
       
-      <h2>Team A: {matchData.teamA}</h2>
-      <h1>Score {matchData.teamA}: {matchData.scoreA}</h1>
-      <h2>Team B: {matchData.teamB}</h2>
-      <h1>Score {matchData.teamB}: {matchData.scoreB}</h1>
-      <table className='score-table'>
-        <thead>
-          <tr>
-            <th>Jersey No</th>
-            <th>Score</th>
-          </tr>
-        </thead>
-        <tbody>
-          {matchData.playersA.map((jersey, index) => (
-            <tr key={index}>
-              <td>{jersey}</td>
-              <td>{matchData.playersAScore[index]}</td>
-              
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <h3>Players B</h3>
-      <table className='score-table'>
-        <thead>
-          <tr>
-            <th>Jersey No</th>
-            <th>Score</th>
-          </tr>
-        </thead>
-        <tbody>
-          {matchData.playersB.map((jersey, index) => (
-            <tr key={index}>
-              <td>{jersey}</td>
-              <td>{matchData.playersBScore[index]}</td>
-              
-            </tr>
-          ))}
-        </tbody>
-      </table>
     </div>
   );
 }

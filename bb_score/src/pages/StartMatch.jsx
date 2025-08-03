@@ -52,7 +52,10 @@ function StartMatch() {
       matchType, 
       noOfQuaters, 
       quarterTime, 
-      quarterBreakTime
+      quarterBreakTime,
+      'matchClock' : quarterTime*60,
+      'shotClock' : 24,
+      'breakClock' : quarterBreakTime
     };
 
     try{

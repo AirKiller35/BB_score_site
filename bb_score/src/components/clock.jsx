@@ -50,7 +50,7 @@ function Clock ({ maxTimeMin, maxTimeSec, onTimeout , matchId, clockType}) {
   // 3 TYPES OF CLOCK : matchClock, shotClock, breakClock
   useEffect(() => {
     if(matchId && isRunning) {
-      fetch(`/match/${matchId}/timer`, {
+      fetch(`http://localhost:4000/match/${matchId}/timer`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json"
