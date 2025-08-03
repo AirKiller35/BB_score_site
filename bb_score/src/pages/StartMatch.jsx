@@ -14,10 +14,10 @@ function StartMatch() {
   const quarterTime = matchData?.TimePerQ;
   const quarterBreakTime = matchData?.QuarterB
 
-  const teamA = matchData?.teamA;
+  const teamA = matchData?.teamA.toUpperCase();
   const playersA = matchData?.APlayers;
   const colourA = matchData?.ColourA;
-  const teamB = matchData?.teamB;
+  const teamB = matchData?.teamB.toUpperCase();
   const playersB = matchData?.BPlayers;
   const colourB = matchData?.ColourB;
 

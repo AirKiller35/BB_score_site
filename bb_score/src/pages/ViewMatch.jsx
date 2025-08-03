@@ -57,10 +57,11 @@ function ViewMatch() {
         
 
       </div>
+
       <div className="teams">
 
         <div className="A">
-          <h2>Team A: {matchData.teamA}</h2>
+          <h2>Team A: {matchData.teamA.toUpperCase()}</h2>
           <h1>Score : {matchData.scoreA}</h1>
           <table className='score-table-view'>
             <thead>
@@ -82,7 +83,7 @@ function ViewMatch() {
         </div>
 
         <div className="B">
-          <h2>Team B: {matchData.teamB}</h2>
+          <h2>Team B: {matchData.teamB.toUpperCase()}</h2>
           <h1>Score : {matchData.scoreB}</h1>
           <table className='score-table-view'>
             <thead>
